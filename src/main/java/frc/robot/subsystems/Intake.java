@@ -113,6 +113,6 @@ intakeDrive = new WPI_TalonSRX(7);
     }
 
     public int getTicksPerSecond() {
-        return intakeDrive.getSelectedSensorVelocity();
+        return (int)intakeDrive.getSelectedSensorVelocity();
     }
 }
