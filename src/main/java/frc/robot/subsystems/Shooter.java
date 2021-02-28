@@ -167,9 +167,16 @@ private WPI_TalonSRX shooterDriveBottom;
         double deltaHeight = heightOfGoalFeet - heightOfCameraFeet;
         //The velocity
         double velocityRaw = Math.sqrt((Math.pow(x, 2) * g)/(2*Math.cos(angleBallLeavesRadians) * (x*Math.sin(angleBallLeavesRadians) - deltaHeight*Math.cos(angleBallLeavesRadians))));
-        SmartDashboard.putNumber("Shooter Velocity", velocityRaw);
+        SmartDashboard.putNumber("Shooter Velocity Raw", velocityRaw);
 
-        this.shoot(SmartDashboard.getNumber("Shooter Raw Speed", 0));
+        double shootVelocity = (.00502 * getHorizontalDistance() + .61);
+        SmartDashboard.putNumber("Shoot Velocity", shootVelocity);
+        this.shoot(shootVelocity);
+        double TopError = shooterDriveTop.getClosedLoopError();
+        SmartDashboard.putNumber("Top Error", TopError);
+
+        double loopTarget = shooterDriveTop.getClosedLoopTarget();
+        SmartDashboard.putNumber("Loop Target", loopTarget);
     }
 
     public void initSpeedMode() {
