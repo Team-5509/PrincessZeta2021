@@ -72,12 +72,12 @@ addChild("elbowDrive",elbowDrive);
     private boolean isOut;
 
     public void foldOut(){
-        elbowDrive.set(Value.kForward);
+        elbowDrive.set(Value.kReverse);
         isOut = true;
     }
 
     public void foldIn(){
-        elbowDrive.set(Value.kReverse);
+        elbowDrive.set(Value.kForward);
         isOut = false;
     }
 
