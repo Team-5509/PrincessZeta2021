@@ -65,7 +65,7 @@ public class DriveTrain extends Subsystem {
     private static final int K_MAX_OUTPUT = 1;
     private static final int K_MIN_OUTPUT = -1;
     private static final int MAX_TICKS_PER_SECOND = 9000;
-    private static final int TICKS_PER_FOOT = 5270;
+    private static final int TICKS_PER_FOOT = 5697;
     private static final int MAX_RPM = 5874;
 
     // These need to be tuned for turn control
