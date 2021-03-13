@@ -67,7 +67,7 @@ public JoystickButton conveyUpButton;
 public JoystickButton conveyDownButton;
 public JoystickButton autoShootButton;
 public JoystickButton winchUpButton;
-public JoystickButton winchDownButton;
+public JoystickButton indexDownButton;
 public JoystickButton indexButton;
 public Joystick copilotControl;
 
@@ -80,8 +80,8 @@ copilotControl = new Joystick(2);
 
 indexButton = new JoystickButton(copilotControl, 7);
 indexButton.whileHeld(new Index(.7));
-winchDownButton = new JoystickButton(copilotControl, 3);
-winchDownButton.whileHeld(new Winching(-1));
+indexDownButton = new JoystickButton(copilotControl, 3);
+indexDownButton.whileHeld(new Index(-.7));
 winchUpButton = new JoystickButton(copilotControl, 4);
 winchUpButton.whileHeld(new Winching(1));
 autoShootButton = new JoystickButton(copilotControl, 2);
@@ -92,16 +92,16 @@ conveyUpButton = new JoystickButton(copilotControl, 5);
 conveyUpButton.whileHeld(new Conveying(.85));
 rotationControlButton = new JoystickButton(copilotControl, 1);
 rotationControlButton.whenPressed(new RotationControl());
-driverLeftJoystick = new Joystick(0);
 
+driverLeftJoystick = new Joystick(0);
 invertButton = new JoystickButton(driverLeftJoystick, 1);
 invertButton.whenPressed(new toggleDriveInvert());
 intakeOutButton = new JoystickButton(driverLeftJoystick, 3);
 intakeOutButton.whileHeld(new Intaking(-.50));
 shiftLowButton = new JoystickButton(driverLeftJoystick, 4);
 shiftLowButton.whenPressed(new ShiftLow());
-driverRightJoystick = new Joystick(1);
 
+driverRightJoystick = new Joystick(1);
 toggleFoldButton = new JoystickButton(driverRightJoystick, 2);
 toggleFoldButton.whenPressed(new ToggleFold());
 alignToTargetButton = new JoystickButton(driverRightJoystick, 11);
