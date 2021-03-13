@@ -88,6 +88,11 @@ public class DriveTrain extends Subsystem {
         backLeftDrive = new CANSparkMax(3, MotorType.kBrushless);
         backRightDrive = new CANSparkMax(1, MotorType.kBrushless);
 
+        frontLeftDrive.restoreFactoryDefaults();
+        frontRightDrive.restoreFactoryDefaults();
+        backLeftDrive.restoreFactoryDefaults();
+        backRightDrive.restoreFactoryDefaults();
+
         frontLeftDrive.setIdleMode(CANSparkMax.IdleMode.kBrake);
         frontRightDrive.setIdleMode(CANSparkMax.IdleMode.kBrake);
         backLeftDrive.setIdleMode(CANSparkMax.IdleMode.kBrake);
@@ -98,6 +103,7 @@ public class DriveTrain extends Subsystem {
          * backLeftDrive = new WPI_TalonSRX(3); backRightDrive = new WPI_TalonSRX(4);
          */
 
+        
         backLeftDrive.follow(frontLeftDrive);//ExternalFollower.kFollowerSparkMax, frontLeftDrive.getDeviceId());
         backRightDrive.follow(frontRightDrive);
 
