@@ -174,7 +174,7 @@ private WPI_TalonSRX shooterDriveBottom;
         double percentVelocity = (.00502*getHorizontalDistance() +.61);
         double tickCowsFiring = percentVelocity * MAX_TICKS_PER_SEC_TOP;
 
-        shooterDriveTop.set(ControlMode.Velocity, tickCowsFiring);
+        shooterDriveTop.set(ControlMode.Velocity, -tickCowsFiring);
         shooterDriveBottom.set(ControlMode.Velocity, tickCowsFiring);
         double currentShootError = shooterDriveTop.getClosedLoopError();
         double currentShootTarget = shooterDriveTop.getClosedLoopTarget();

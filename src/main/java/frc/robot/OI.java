@@ -78,11 +78,12 @@ public Joystick copilotControl;
 
 copilotControl = new Joystick(2);
 
-indexButton = new JoystickButton(copilotControl, 7);
+
+indexButton = new JoystickButton(copilotControl, 4);
 indexButton.whileHeld(new Index(.7));
 indexDownButton = new JoystickButton(copilotControl, 3);
 indexDownButton.whileHeld(new Index(-.7));
-winchUpButton = new JoystickButton(copilotControl, 4);
+winchUpButton = new JoystickButton(copilotControl, 7);
 winchUpButton.whileHeld(new Winching(1));
 autoShootButton = new JoystickButton(copilotControl, 2);
 autoShootButton.whileHeld(new ShootingAuto());
