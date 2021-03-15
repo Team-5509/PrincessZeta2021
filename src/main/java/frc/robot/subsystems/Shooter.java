@@ -161,24 +161,21 @@ private WPI_TalonSRX shooterDriveBottom;
     public void shootAuto() {
         //See what the camera mounting angle is.
         //SmartDashboard.putNumber("ShootMounting Angle of Camera", getCameraMountingAngle(15.04166666667));
+        final double angleBallLeavesRadians = 0.733; //Fake value ~45 degrees (must be in radians)
+        final double g = 9.81;
 
         double distanceFromTargetFeet = getHorizontalDistance();
-        SmartDashboard.putNumber("distanceFeet", distanceFromTargetFeet);
+        SmartDashboard.putNumber("Shooter Distance ft.", distanceFromTargetFeet);
+        //Corbin, Drew, why?
+        double deltaHeight = heightOfGoalFeet - heightOfCameraFeet;
+        //The velocity
+        double velocityRaw = Math.sqrt((Math.pow(distanceFromTargetFeet, 2) * g)/(2*Math.cos(angleBallLeavesRadians) * (distanceFromTargetFeet*Math.sin(angleBallLeavesRadians) - deltaHeight*Math.cos(angleBallLeavesRadians))));
 
-        //Constants
-        double g = -9.81;
-        double theta = 40;
-        double distanceFromTargetMeters = 0.3048 * distanceFromTargetFeet;
-        double secTicksPerFeetCow = 1779.624;
+        double percentVelocity = (.00502*getHorizontalDistance() +.61);
+        double tickCowsFiring = percentVelocity * MAX_TICKS_PER_SEC_TOP;
 
-        double vi = Math.sqrt((0.5 * g * distanceFromTargetMeters) / ((1.5 - distanceFromTargetFeet) * Math.cos(theta) * Math.cos(theta)));
-        SmartDashboard.putNumber("initialVelocity", vi);
-
-        double tickCows = vi * secTicksPerFeetCow * 10;
-        SmartDashboard.putNumber("tickCows", tickCows);
-        
-        shooterDriveTop.set(ControlMode.Velocity, tickCows);
-        shooterDriveBottom.set(ControlMode.Velocity, tickCows);
+        shooterDriveTop.set(ControlMode.Velocity, tickCowsFiring);
+        shooterDriveBottom.set(ControlMode.Velocity, tickCowsFiring);
         double currentShootError = shooterDriveTop.getClosedLoopError();
         double currentShootTarget = shooterDriveTop.getClosedLoopTarget();
         SmartDashboard.putNumber("shootError", currentShootError);
