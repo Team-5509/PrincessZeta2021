@@ -69,7 +69,7 @@ public class DriveTrain extends Subsystem {
     private static final int MAX_RPM = 5874;
 
     // These need to be tuned for turn control
-    private static final double PIDTURN_P = 0.015;
+    private static final double PIDTURN_P = 0.005;
     private static final double PIDTURN_I = 0.0015;
     private static final double PIDTURN_D = 0.0;
 
